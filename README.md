@@ -64,6 +64,32 @@ task-workflow-sorter/        Bundled plugin that moves deferred tasks to a list'
 
 It writes only inside the selected vault's `.obsidian` folder: community-plugin settings, Tasks settings, Task Status settings, the bundled sorter plugin, and `snippets/task-workflow.css`. Before changing an existing JSON settings file, it creates a sibling `*.before-task-workflow-pack.bak` backup. It does not modify notes, delete settings, or upgrade already-installed third-party plugins.
 
+## See it in action
+
+![Illustrative fictional task workflow UI showing every status and the task-type picker](assets/task-workflow-example.png)
+
+_Illustrative example only — it is a fabricated demo, not a screenshot of a real vault._
+
+## Everyday use
+
+Start an ordinary task as `- [ ] Plan the release`. A normal checkbox click follows the configured next state: **To do → In progress → Done**.
+
+When a task needs a different outcome, right-click its checkbox (or long-press for 500 ms) and choose **Select Task Type**. Each row shows the Markdown marker, its large visual icon, and what the next normal click will do.
+
+```markdown
+- [ ] Plan the release                 # ○ To do
+- [/] Draft the README                  # 🔄 In progress
+- [b] Waiting for review                # ⛔ Blocked
+- [>] Follow up next week               # ⏳ Deferred — moves to this list's bottom
+- [-] Old approach                      # ❌ Cancelled
+- [?] Confirm requirements              # ❓ Needs clarification
+- [!] Send today                        # ⚡ Urgent
+- [<] Prepare for Friday                # 📅 Scheduled
+- [x] Publish the package               # ✅ Done
+```
+
+You can also type a marker directly when editing Markdown. The workflow recognises it immediately; the bundled sorter moves a deferred task and any child tasks to the bottom of its current list.
+
 ## Current status set
 
 | Status | Markdown | Icon |
