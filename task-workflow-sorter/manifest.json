@@ -1,0 +1,9 @@
+{
+  "id": "task-workflow-sorter",
+  "name": "Task Workflow Sorter",
+  "version": "1.0.2",
+  "minAppVersion": "1.0.0",
+  "description": "Moves deferred tasks to the bottom of their current Markdown list.",
+  "author": "Obsidian Task Workflow",
+  "isDesktopOnly": false
+}

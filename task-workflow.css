@@ -1,0 +1,105 @@
+/* Portable Task Workflow Pack — large, standalone status icons.
+   The checkbox remains the click target; its border is deliberately hidden. */
+
+.task-list-item-checkbox:is([data-task="/"], [data-task="b"], [data-task=">"], [data-task="-"], [data-task="?"], [data-task="!"], [data-task="<"], [data-task="x"]),
+.task-list-item:is([data-task="/"], [data-task="b"], [data-task=">"], [data-task="-"], [data-task="?"], [data-task="!"], [data-task="<"], [data-task="x"]) .task-list-item-checkbox {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 1.45em;
+  height: 1.45em;
+  margin-right: 0.35em;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-mask-image: none !important;
+  position: relative;
+  vertical-align: -0.22em;
+}
+
+.task-list-item-checkbox:is([data-task="/"], [data-task="b"], [data-task=">"], [data-task="-"], [data-task="?"], [data-task="!"], [data-task="<"], [data-task="x"])::after,
+.task-list-item:is([data-task="/"], [data-task="b"], [data-task=">"], [data-task="-"], [data-task="?"], [data-task="!"], [data-task="<"], [data-task="x"]) .task-list-item-checkbox::after {
+  display: grid !important;
+  place-items: center;
+  position: absolute !important;
+  inset: 0;
+  margin: 0 !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-mask-image: none !important;
+  transform: none !important;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 1.22em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.task-list-item-checkbox[data-task="/"]::after, .task-list-item[data-task="/"] .task-list-item-checkbox::after { content: "🔄" !important; }
+.task-list-item-checkbox[data-task="b"]::after, .task-list-item[data-task="b"] .task-list-item-checkbox::after { content: "⛔" !important; }
+.task-list-item-checkbox[data-task=">"]::after, .task-list-item[data-task=">"] .task-list-item-checkbox::after { content: "⏳" !important; }
+.task-list-item-checkbox[data-task="-"]::after, .task-list-item[data-task="-"] .task-list-item-checkbox::after { content: "×" !important; color: #ef4444 !important; font-family: inherit; font-size: 1.75em; font-weight: 800; }
+.task-list-item-checkbox[data-task="?"]::after, .task-list-item[data-task="?"] .task-list-item-checkbox::after { content: "❓" !important; }
+.task-list-item-checkbox[data-task="!"]::after, .task-list-item[data-task="!"] .task-list-item-checkbox::after { content: "⚡" !important; }
+.task-list-item-checkbox[data-task="<"]::after, .task-list-item[data-task="<"] .task-list-item-checkbox::after { content: "📅" !important; }
+.task-list-item-checkbox[data-task="x"]::after, .task-list-item[data-task="x"] .task-list-item-checkbox::after { content: "✅" !important; }
+
+.task-list-item[data-task="-"] { color: var(--text-muted); opacity: 0.72; text-decoration: none !important; }
+
+/* Optional Task Status plugin: keep its right-click status picker compact.
+   It fits the longest workflow label without altering other Obsidian prompts. */
+.modal-container:has(.task-list-item) {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none;
+}
+
+.modal-container:has(.task-list-item) .modal,
+.modal-container:has(.task-list-item) .prompt {
+  width: 31rem !important;
+  min-width: 0 !important;
+  max-width: calc(100vw - 2rem);
+}
+
+/* Task Status picker: show the real Markdown marker instead of its generic
+   green checkbox, plus a clear workflow title and next-state descriptions. */
+.modal-container:has(.task-list-item) .prompt::before {
+  content: "Select Task Type";
+  display: block;
+  padding: 0.65rem 0.8rem 0.35rem;
+  color: var(--text-normal);
+  font-size: 1.05em;
+  font-weight: 700;
+}
+
+.modal-container:has(.task-list-item) .prompt .task-list-item {
+  display: grid !important;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  align-items: center !important;
+  column-gap: 0.35rem;
+  text-align: left !important;
+}
+
+.modal-container:has(.task-list-item) .prompt .task-list-item > input.task-list-item {
+  display: none !important;
+}
+
+.modal-container:has(.task-list-item) .prompt .task-list-item::before {
+  justify-self: start;
+  padding: 0.12rem 0.28rem;
+  border-radius: 0.28rem;
+  background: var(--background-modifier-border);
+  color: var(--text-accent);
+  font-family: var(--font-monospace);
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task=" "]::before { content: "[ ]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="/"]::before { content: "[/]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="b"]::before { content: "[b]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task=">"]::before { content: "[>]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="-"]::before { content: "[-]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="?"]::before { content: "[?]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="!"]::before { content: "[!]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="<"]::before { content: "[<]"; }
+.modal-container:has(.task-list-item) .prompt .task-list-item[data-task="x"]::before { content: "[x]"; }

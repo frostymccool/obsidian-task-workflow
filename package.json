@@ -1,0 +1,15 @@
+{
+  "name": "obsidian-task-workflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable Obsidian task-status workflow installer and Agent Skill.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node --check install-task-workflow.mjs && node --check task-workflow-sorter/main.js && node --check task-workflow-sorter/sort-deferred-tasks.js",
+    "test": "node --test task-workflow-sorter/sort-deferred-tasks.test.js",
+    "verify": "npm run check && npm test"
+  },
+  "license": "MIT"
+}
