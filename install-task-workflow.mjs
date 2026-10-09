@@ -107,7 +107,7 @@ async function installMissingPlugins() {
 }
 
 function installBundledSorter() {
-  const sourceDirectory = join(skillDirectory, bundledSorter.id);
+  const sourceDirectory = skillDirectory;
   const destinationDirectory = join(vault, '.obsidian', 'plugins', bundledSorter.id);
   mkdirSync(destinationDirectory, { recursive: true });
   for (const fileName of bundledSorter.files) {

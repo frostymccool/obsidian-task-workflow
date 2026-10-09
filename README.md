@@ -10,7 +10,7 @@ A portable Agent Skill and installer for a clear, multi-state Obsidian task work
 2. Download this repository as a ZIP from GitHub and unzip it, or clone your copy:
 
    ```sh
-   git clone https://github.com/YOUR-ACCOUNT/obsidian-task-workflow.git
+   git clone https://github.com/frostymccool/obsidian-task-workflow.git
    ```
 
 3. From the downloaded folder, run:
@@ -40,6 +40,28 @@ The default path lives in `~/.obsidian-task-workflow.json`, outside this reposit
 
 An Obsidian MCP server alone cannot reliably install this workflow: the installer must update hidden `.obsidian` configuration and CSS files. An MCP-only agent can create a setup note and provide the command, but it must not report success until a process with filesystem access has run the installer.
 
+## Keep it updated with BRAT
+
+BRAT can keep the workflow's custom Obsidian plugin up to date. **Run the Quick start installer once first**: it installs and configures the required Tasks and Task Status plugins. BRAT then updates the workflow's visual styles and deferred-task sorter without a repeat installation.
+
+1. Install [BRAT](https://github.com/TfTHacker/obsidian42-brat) from Obsidian's Community plugins browser and enable it.
+2. Open the Command palette and run **BRAT: Add a beta plugin for testing**.
+3. Enter this repository path:
+
+   ```text
+   frostymccool/obsidian-task-workflow
+   ```
+
+4. Leave it on BRAT's normal update schedule, or use BRAT's update command whenever you want the latest version.
+
+BRAT installs the plugin as `task-workflow-sorter`, matching the ID already used by the installer. It therefore updates the existing sorter rather than adding a duplicate. Each GitHub release includes the exact `main.js`, `manifest.json`, and `styles.css` files BRAT requires.
+
+| BRAT updates | Still handled by the one-time installer or Obsidian |
+| --- | --- |
+| Large status icons and picker styling | First-time Tasks and Task Status installation/configuration |
+| Deferred-task sorting | Updates to the Tasks and Task Status third-party plugins |
+| The workflow plugin itself | Existing user-created task statuses outside this workflow |
+
 ## Use with any agent harness
 
 The repository root is a standard Agent Skill folder (`SKILL.md` plus supporting files). Clone or symlink it into the skills location recognized by your harness:
@@ -56,6 +78,8 @@ No harness is required to use it: anyone with Node.js can run `install-task-work
 ```text
 SKILL.md                     Harness-neutral instructions
 install-task-workflow.mjs    Dependency-free installer (Node.js standard library only)
+main.js, manifest.json       BRAT/Obsidian plugin release assets
+styles.css                   BRAT-loaded status styling
 task-workflow.css            Visual status definitions
 task-workflow-sorter/        Bundled plugin that moves deferred tasks to a list's bottom
 ```
