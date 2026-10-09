@@ -146,6 +146,7 @@ To remove it, disable **Task Workflow Sorter** and the `task-workflow` CSS snipp
 - **“Not an Obsidian vault”** — provide the vault folder itself, not a note or a parent folder; it must already contain `.obsidian`.
 - **Nothing changes after install** — fully quit and reopen Obsidian, and confirm Restricted mode is off.
 - **Icons look like normal ticks** — verify that the `task-workflow` snippet is enabled in **Settings → Appearance → CSS snippets**.
+- **BRAT installed but icons did not change** — run **BRAT: Check for updates to all beta plugins** (or **BRAT: Reinstall beta plugin**) and restart Obsidian. Confirm that `.obsidian/plugins/task-workflow-sorter/styles.css` exists; BRAT needs that release asset to load the large icons. This is especially relevant for a BRAT registration made before the first `1.1.0` release.
 - **Download fails** — check internet access, or install Tasks and Task Status from Obsidian's Community plugins browser, then rerun the installer.
 
 ## Sharing and licensing
